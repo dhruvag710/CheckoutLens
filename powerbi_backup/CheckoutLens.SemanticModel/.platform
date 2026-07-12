@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CheckoutLens"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5878e3d8-0bfd-4e98-a107-7c3f31ab1621"
+  }
+}

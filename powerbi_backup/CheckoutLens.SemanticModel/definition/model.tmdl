@@ -1,0 +1,22 @@
+model Model
+	culture: en-IN
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["DeviceFunnel","ChannelFunnel","CountryFunnel","LandingPageFunnel"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DeviceFunnel
+ref table ChannelFunnel
+ref table CountryFunnel
+ref table LandingPageFunnel
+
+ref cultureInfo en-IN
+

@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Jupyter Notebook Checkpoints & Cache
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Data Exports & Raw Storage
+# Keep repo light; track schemas and starter documentation only
+data/*.csv
+data/*.parquet
+data/*.json
+data/*.zip
+data/*.gz
+!data/README.md
+
+# Credentials & GCP Service Account Keys
+*.json
+!data/README.md
+!package.json
+.env
+.env.*
+secrets/
+credentials/
+*.pem
+*.key
+
+# Power BI Backup & Auto-recover files
+*.pbix~
+*.pbit~
+
+# IDE & OS Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

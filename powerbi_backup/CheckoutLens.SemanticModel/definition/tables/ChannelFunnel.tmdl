@@ -1,0 +1,176 @@
+table ChannelFunnel
+	lineageTag: 49f56466-d5a5-4471-a144-7410bc24f86b
+
+	column channel_group
+		dataType: string
+		lineageTag: 06b2b8cb-cf1a-4c84-b487-3babf25b9b17
+		summarizeBy: none
+		sourceColumn: channel_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column sessions_view_item
+		dataType: int64
+		formatString: 0
+		lineageTag: a111fc61-ec6e-4448-b54f-5db539aa45f6
+		summarizeBy: sum
+		sourceColumn: sessions_view_item
+
+		annotation SummarizationSetBy = Automatic
+
+	column sessions_add_to_cart
+		dataType: int64
+		formatString: 0
+		lineageTag: 275285fc-736f-404b-80cf-3647e4fad1c4
+		summarizeBy: sum
+		sourceColumn: sessions_add_to_cart
+
+		annotation SummarizationSetBy = Automatic
+
+	column sessions_begin_checkout
+		dataType: int64
+		formatString: 0
+		lineageTag: f9d1d3c2-9c5c-472a-b380-985971a7879a
+		summarizeBy: sum
+		sourceColumn: sessions_begin_checkout
+
+		annotation SummarizationSetBy = Automatic
+
+	column sessions_add_shipping
+		dataType: int64
+		formatString: 0
+		lineageTag: d49a786a-4e0a-4210-8978-d0956cde37f3
+		summarizeBy: sum
+		sourceColumn: sessions_add_shipping
+
+		annotation SummarizationSetBy = Automatic
+
+	column sessions_add_payment
+		dataType: int64
+		formatString: 0
+		lineageTag: 16dd3e42-4419-4891-9aaa-9afbf1f5baf2
+		summarizeBy: sum
+		sourceColumn: sessions_add_payment
+
+		annotation SummarizationSetBy = Automatic
+
+	column sessions_purchase_strict
+		dataType: int64
+		formatString: 0
+		lineageTag: 87f4da08-9906-4cfa-bacf-35b6f1a569bc
+		summarizeBy: sum
+		sourceColumn: sessions_purchase_strict
+
+		annotation SummarizationSetBy = Automatic
+
+	column sessions_purchase_macro
+		dataType: int64
+		formatString: 0
+		lineageTag: 6756382f-b116-4229-a278-d72633f82f68
+		summarizeBy: sum
+		sourceColumn: sessions_purchase_macro
+
+		annotation SummarizationSetBy = Automatic
+
+	column view_to_cart_cr_pct
+		dataType: double
+		lineageTag: b3c6a88d-708d-4593-908b-6f4837474a3a
+		summarizeBy: sum
+		sourceColumn: view_to_cart_cr_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cart_to_checkout_cr_pct
+		dataType: double
+		lineageTag: f753d8f8-7cc6-4006-af01-d3e4cfff6a84
+		summarizeBy: sum
+		sourceColumn: cart_to_checkout_cr_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column checkout_to_shipping_cr_pct
+		dataType: double
+		lineageTag: 6c492d82-fd69-4f1b-a6ee-345716f16cf3
+		summarizeBy: sum
+		sourceColumn: checkout_to_shipping_cr_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column shipping_to_payment_cr_pct
+		dataType: double
+		lineageTag: 6162bbad-7f76-4941-b0f4-a121c585f1b9
+		summarizeBy: sum
+		sourceColumn: shipping_to_payment_cr_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column payment_to_purchase_cr_pct
+		dataType: double
+		lineageTag: de400a16-5603-4ae1-a30d-86a58ed43702
+		summarizeBy: sum
+		sourceColumn: payment_to_purchase_cr_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column macro_checkout_to_purchase_cr_pct
+		dataType: double
+		lineageTag: 44afcbe5-31e0-4119-b624-6d803533d16c
+		summarizeBy: sum
+		sourceColumn: macro_checkout_to_purchase_cr_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column overall_strict_cr_pct
+		dataType: double
+		lineageTag: a577356e-70a1-4ee2-9f9b-c0834f418f65
+		summarizeBy: sum
+		sourceColumn: overall_strict_cr_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column overall_macro_cr_pct
+		dataType: double
+		lineageTag: 4b3035d1-f410-4dc6-ad3f-ba85534a8524
+		summarizeBy: sum
+		sourceColumn: overall_macro_cr_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column sample_size_status
+		dataType: string
+		lineageTag: 4d5d9aaa-6b70-4bd6-b2ff-98f8372fc277
+		summarizeBy: none
+		sourceColumn: sample_size_status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ChannelFunnel = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\agarw\OneDrive\Desktop\CheckoutLens\data\06_traffic_channel_funnel.csv.csv"),[Delimiter=",", Columns=17, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"channel_group", type text}, {"sessions_view_item", Int64.Type}, {"sessions_add_to_cart", Int64.Type}, {"sessions_begin_checkout", Int64.Type}, {"sessions_add_shipping", Int64.Type}, {"sessions_add_payment", Int64.Type}, {"sessions_purchase_strict", Int64.Type}, {"sessions_purchase_macro", Int64.Type}, {"view_to_cart_cr_pct", type number}, {"cart_to_checkout_cr_pct", type number}, {"checkout_to_shipping_cr_pct", type number}, {"shipping_to_payment_cr_pct", type number}, {"payment_to_purchase_cr_pct", type number}, {"macro_checkout_to_purchase_cr_pct", type number}, {"overall_strict_cr_pct", type number}, {"overall_macro_cr_pct", type number}, {"sample_size_status", type text}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

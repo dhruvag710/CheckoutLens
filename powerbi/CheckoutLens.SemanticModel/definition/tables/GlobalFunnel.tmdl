@@ -1,0 +1,51 @@
+table GlobalFunnel
+	lineageTag: b08c4e51-87a3-4871-b68e-e9d6d3711921
+
+	column stage_order
+		dataType: int64
+		formatString: 0
+		lineageTag: a17c4e51-87a3-4871-b68e-e9d6d3711922
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [stage_order]
+
+		annotation SummarizationSetBy = Automatic
+
+	column stage_name
+		dataType: string
+		lineageTag: c26c4e51-87a3-4871-b68e-e9d6d3711923
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [stage_name]
+		sortByColumn: stage_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column sessions
+		dataType: int64
+		formatString: #,0
+		lineageTag: d35c4e51-87a3-4871-b68e-e9d6d3711924
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [sessions]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition GlobalFunnel = calculated
+		mode: import
+		source =
+			DATATABLE(
+				"stage_order", INTEGER,
+				"stage_name", STRING,
+				"sessions", INTEGER,
+				{
+					{ 1, "1. Product View", 77020 },
+					{ 2, "2. Add to Cart", 15167 },
+					{ 3, "3. Begin Checkout", 5416 },
+					{ 4, "4. Add Shipping", 3119 },
+					{ 5, "5. Add Payment", 2438 },
+					{ 6, "6. Strict Purchase", 1792 }
+				}
+			)
+
+	annotation PBI_Id = 77020151675416311924381792

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "CheckoutLens"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0536bcea-cd79-4a38-90eb-e1cbfd3a6908"
+  }
+}
